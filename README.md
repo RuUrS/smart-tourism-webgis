@@ -15,7 +15,17 @@
 - 大模型：智谱 AI GLM-4.5-Flash
 - 数据来源：景区 POI、栾川县边界、OSM 路网、旅游知识库、模拟客流数据
 
-## 三、主要功能
+## 三、开发环境
+
+- 操作系统：Windows 11
+- Node.js：v24.15.0
+- npm：11.12.1
+- Python：3.12+
+- PostgreSQL：14+
+- PostGIS：3+
+- Git：2.54.0
+
+## 四、主要功能
 
 1. 栾川县边界与老君山 POI 展示
 2. 在线地图搜索与点位详情查询
@@ -27,7 +37,7 @@
 8. ECharts 智能旅游数据大屏
 9. LangChain Demo 框架验证模块
 
-## 四、启动方式
+## 五、启动方式
 
 ### 后端启动
 
@@ -38,6 +48,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### 前端启动
+
+> 前端项目基于 Vite 构建，运行前请先安装 Node.js 和 npm。
 
 ```powershell
 cd frontend
