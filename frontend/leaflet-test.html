@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet 测试栾川县边界</title>
+
+    <!-- Leaflet 样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <!-- Leaflet 脚本 -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. 创建地图
+        const map = L.map('map').setView([33.78, 111.62], 10);
+
+        // 2. 加载底图
+        L.tileLayer('https://webrd04.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}', {
+                maxZoom: 19
+            }).addTo(map);
+
+        // 3. 加载栾川县边界 GeoJSON
+        fetch('/api/boundary/luanchuan')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('GeoJSON 文件加载失败');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const boundaryLayer = L.geoJSON(data, {
+                    style: {
+                        color: '#ff6600',
+                        weight: 3,
+                        fillColor: '#ffcc66',
+                        fillOpacity: 0.15
+                    },
+                    onEachFeature: function (feature, layer) {
+                        const name = feature.properties.name || '栾川县';
+                        const adcode = feature.properties.adcode || '';
+                        layer.bindPopup(`
+              <b>${name}</b><br>
+              行政区划代码：${adcode}
+            `);
+                    }
+                }).addTo(map);
+
+                // 4. 自动缩放到边界范围
+                map.fitBounds(boundaryLayer.getBounds());
+            })
+            .catch(error => {
+                console.error(error);
+                alert('边界加载失败，请检查文件路径或 GeoJSON 格式');
+            });
+    </script>
+</body>
+
+</html>
