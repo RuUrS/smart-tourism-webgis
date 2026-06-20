@@ -25,7 +25,33 @@
 - PostGIS：3+
 - Git：2.54.0
 
-## 四、主要功能
+## 四、项目结构
+
+```text
+smart-tourism-webgis
+├─ backend/        # 后端服务目录，基于 FastAPI 实现接口服务、数据库访问和 AI 调用
+├─ data/           # 项目数据目录，存放处理后的业务数据或示例数据；原始大数据 data/raw/ 已通过 .gitignore 排除
+│ ├─ processed/    # 已处理后的示例数据和空间数据
+│ └─ database/     # 数据库相关辅助数据或初始化文件
+├─ database/       # 数据库脚本目录，存放建表 SQL、初始化 SQL 等数据库相关文件
+│ ├─ 10_create_auth_user_records.sql # 用户注册登录和用户记录表结构
+│ └─ sql/          # PostGIS 扩展、业务表、知识库、路线、客流、索引等 SQL 脚本
+├─ docs/           # 项目文档目录
+│ ├─ api/          # 接口说明文档目录
+│ ├─ screenshots/  # 系统截图目录
+│ ├─ test/         # 系统测试记录目录
+│ └─ thesis/       # 论文或设计说明相关资料目录
+├─ frontend/       # 前端项目目录，基于 Vue 3 + Vite 实现地图页面、搜索、天气、路线规划和智能助手界面
+├─ notebooks/      # 数据处理、实验分析或临时验证用的 Notebook 目录
+├─ scripts/        # 项目辅助脚本目录，例如目录创建、数据处理或自动化执行脚本
+├─ .gitignore      # Git 忽略规则文件，用于排除 .env、node_modules、虚拟环境、大型 GIS 数据、压缩包等不应上传的内容
+├─ .gitkeep        # 空目录占位文件，用于保留 Git 默认不跟踪的空文件夹
+└─ README.md       # 项目总说明文档，用于介绍项目功能、技术栈、目录结构和运行方式
+```
+
+说明：项目中的 `.env` 配置文件、`node_modules/`、Python 虚拟环境、`data/raw/` 原始 GIS 大数据、`.gpkg`、`.qgz`、压缩包和本地图片素材等文件已通过 `.gitignore` 排除，不会上传到 GitHub。
+
+## 五、主要功能
 
 1. 栾川县边界与老君山 POI 展示
 2. 在线地图搜索与点位详情查询
@@ -37,7 +63,7 @@
 8. ECharts 智能旅游数据大屏
 9. LangChain Demo 框架验证模块
 
-## 五、启动方式
+## 六、启动方式
 
 ### 后端启动
 
