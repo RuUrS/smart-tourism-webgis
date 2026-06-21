@@ -6,6 +6,12 @@
 
 系统以 PostGIS 作为空间数据库，采用 Vue 3 + Leaflet 构建前端地图界面，采用 FastAPI 构建后端服务，接入高德 API 和智谱 AI GLM-4.5-Flash，实现基于大模型与功能 Agent 的旅游信息服务。
 
+## 系统界面展示
+
+下图为系统前端主界面，包含地图展示、图层控制、在线搜索、天气信息、路线规划、智能旅游助手和账号状态等功能模块。
+
+![系统前端主界面](docs/screenshots/frontend-main.png)
+
 ## 二、技术栈
 
 - 前端：Vue 3、Vite、Leaflet、ECharts
