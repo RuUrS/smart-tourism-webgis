@@ -10,7 +10,7 @@
 
 下图为系统前端主界面，包含地图展示、图层控制、在线搜索、天气信息、路线规划、智能旅游助手和账号状态等功能模块。
 
-![系统前端主界面](docs/screenshots/frontend-main.png)
+![系统前端主界面](./docs/screenshots/frontend-main.png)
 
 ## 二、技术栈
 
